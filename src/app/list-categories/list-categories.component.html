@@ -4,20 +4,18 @@
 <input [value]="name"><br>
 <input [(ngModel)]="name"><br>--->
 <input [(ngModel)]="titre">
+<input type="text" [(ngModel)]="color">
 <div class="container">
   <div class="row">
     <div *ngFor="let x of categories | contains:titre" class="col-md-4" style="margin-bottom: 20px;">
-     <!--- <ng-container *ngIf="x.title.toLowerCase().includes(titre.toLowerCase())">-->
-      <img (click)="getDescription(x.description)" [src]="x.image" [alt]="x.title" class="img-fluid h-50 w-75">
-      <h3 appHighlight>{{ x.title | uppercase }}</h3>
-      <a [routerLink]="['details',x.id]">details</a>
-      <button [routerLink]="['/products',x.id]"  *ngIf="x.available" class="btn btn-primary">Voir produits</button>
-      <button [routerLink]="['/products']" [queryParams]="{'id':x.id}" [hidden]="!x.available" class="btn btn-primary">Voir produits</button>
-      <div> {{ x.available ? '' : 'Catégorie non disponible'}}</div>
+     <app-card [color]="color" [data]="x" (notified)="getNotif($event)"></app-card>
+      <!--- <ng-container *ngIf="x.title.toLowerCase().includes(titre.toLowerCase())">-->
+
     <!---</ng-container> --->
 
   </div>
   </div>
 </div>
+
 
 <router-outlet></router-outlet>

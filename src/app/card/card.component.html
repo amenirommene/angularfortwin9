@@ -1,0 +1,7 @@
+
+<img (click)="getDescription(data.description)" [src]="data.image" [alt]="data.title" class="img-fluid h-50 w-75">
+<h3 appHighlight>{{ data.title | uppercase }}</h3>
+<a [routerLink]="['details',data.id]">details</a>
+<button (click)="sendNotif()" [routerLink]="['/products',data.id]"  *ngIf="data.available" class="btn btn-primary">Voir produits</button>
+<button  [routerLink]="['/products']" [queryParams]="{'id':data.id}" [hidden]="!data.available" class="btn btn-primary">Voir produits</button>
+<div [style.backgroundColor]="color"> {{ data.available ? '' : 'Catégorie non disponible'}}</div>

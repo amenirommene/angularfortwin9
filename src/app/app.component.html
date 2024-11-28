@@ -1,4 +1,6 @@
-<app-header></app-header>
+<app-header #h></app-header>
+<!--- h: variable référence de template-->
+{{h.isAdmin}}
 <router-outlet></router-outlet>
 <app-footer></app-footer>
 <button type="button" class="btn btn-primary">Test</button>

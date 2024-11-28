@@ -1,10 +1,12 @@
 export class Product {
   id: number;
-  name: string;
+  name: string; //title
   image:string;
   categoryId: number;
   description : string;
   price: number;
   brand:string;
-  promotion : number;
+  promotion : number; //boolean
+  //quantity : number;
+  
  }

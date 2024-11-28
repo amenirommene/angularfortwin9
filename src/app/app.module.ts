@@ -17,7 +17,8 @@ import { ProductsQPCategoryComponent } from './products-qpcategory/products-qpca
 import { CategoryDetailsComponent } from './category-details/category-details.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AddProductReactiveComponent } from './add-product-reactive/add-product-reactive.component';
-
+import { CardComponent } from './card/card.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     //liste des composants attachés à ce module
@@ -35,13 +36,15 @@ import { AddProductReactiveComponent } from './add-product-reactive/add-product-
     ProductsQPCategoryComponent,
     CategoryDetailsComponent,
     AddProductComponent,
-    AddProductReactiveComponent
+    AddProductReactiveComponent,
+    CardComponent
   ],
   imports: [ //la liste des modules à utiliser
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [], //services à utiliser
   bootstrap: [AppComponent] //les composants à appeler dans le fichier index.html
