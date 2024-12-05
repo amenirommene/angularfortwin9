@@ -1,3 +1,4 @@
+import { Product } from './../models/product';
 import { Observable } from 'rxjs';
 import { Category } from './../models/category';
 import { Injectable } from '@angular/core';
@@ -9,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class CategoryService {
 
   apiUrl : string = "http://localhost:3000/categories";
+  apiUrlProducts : string = "http://localhost:3000/products";
   constructor(private http: HttpClient) { }
 
   getListCategories() : Category[]{
@@ -26,4 +28,18 @@ export class CategoryService {
   getListCategoriesFromBackend() : Observable<Category[]> {
     return this.http.get<Category[]>(this.apiUrl);
   }
+
+  addToListCategories(category:Category) : Observable<Category> {
+    return this.http.post<Category>(this.apiUrl,category);
+  }
+
+  getProductsByIdCategory(id:number) : Observable<Product[]>{
+    return this.http.get<Product[]>(this.apiUrlProducts + "?categoryId=" + id)
+
+  }
+
+  addProduct(p:Product) : Observable<Product>{
+   return this.http.post<Product>(this.apiUrlProducts,p);
+  }
+
 }

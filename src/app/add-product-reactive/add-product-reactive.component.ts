@@ -1,3 +1,4 @@
+import { CategoryService } from './../services/category.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -9,6 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class AddProductReactiveComponent implements OnInit {
 myForm: FormGroup;
 nametest = new FormControl() ;
+constructor(private cs:CategoryService){}
 ngOnInit(){  //méthode hook : utile pour l'initialisation
  this.myForm=new FormGroup({
   name : new FormControl("",[Validators.required,Validators.minLength(3)]),
@@ -22,9 +24,11 @@ get name(){
 }
 
 send(){
+
  if  (this.myForm.valid){
   console.log(this.myForm.value)
+  this.cs.addProduct(this.myForm.value).subscribe(
+    ()=>{alert ("add with success"); this.myForm.reset() });
  }
-  console.log('tttt')
 }
 }
